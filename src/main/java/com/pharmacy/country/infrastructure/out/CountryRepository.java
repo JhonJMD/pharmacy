@@ -43,6 +43,7 @@ public class CountryRepository implements CountryService{
                 JOptionPane.showMessageDialog(null, "Country addition failed!", "Error", JOptionPane.ERROR_MESSAGE);
             }
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error during country addition: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         } 
     }
@@ -53,13 +54,9 @@ public class CountryRepository implements CountryService{
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, codeCountry); 
-            int rowsAffected = ps.executeUpdate();
-            if (rowsAffected > 0){
-                JOptionPane.showMessageDialog(null, "Country deleted successfully: " + codeCountry + "!","Successfully",JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Country deletion failed!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            ps.executeUpdate();
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error during country deletion: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
     }
@@ -81,25 +78,22 @@ public class CountryRepository implements CountryService{
                 e.printStackTrace();
             }
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error during find Country: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
         return Optional.empty();
     }
 
     @Override
-    public void updtaCountry(Country country) {
-        String query = "UPDATE country SET namecountry = ? WHERE codecontry = ?";
+    public void updateCountry(Country country) {
+        String query = "UPDATE country SET namecountry = ? WHERE codecountry = ?";
         try {
             PreparedStatement ps = connection.prepareStatement(query);
             ps.setString(1, country.getNamecountry());
             ps.setString(2, country.getCodecountry());
-            int rowsAffected = ps.executeUpdate();
-            if (rowsAffected > 0){
-                JOptionPane.showMessageDialog(null, "Country updated successfully: " + country.getNamecountry() + "!","Successfully",JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(null, "Country update failed!", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+            ps.executeUpdate();
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error during country update: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
     }

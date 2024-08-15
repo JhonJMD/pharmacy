@@ -11,6 +11,6 @@ public class UpdateCountryUseCase {
     }
 
     public void execute(Country country){
-        countryService.createCountry(country);
+        countryService.updateCountry(country);
     }
 }

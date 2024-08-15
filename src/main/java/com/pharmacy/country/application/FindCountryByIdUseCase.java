@@ -1,5 +1,8 @@
 package com.pharmacy.country.application;
 
+import java.util.*;
+
+import com.pharmacy.country.domain.entity.Country;
 import com.pharmacy.country.domain.service.CountryService;
 
 public class FindCountryByIdUseCase {
@@ -9,7 +12,7 @@ public class FindCountryByIdUseCase {
         this.countryService = countryService;
     }
 
-    public void execute(String codecountry){
-        countryService.findCountryById(codecountry);
+    public Optional<Country> execute(String codecountry){
+        return countryService.findCountryById(codecountry);
     }
 }

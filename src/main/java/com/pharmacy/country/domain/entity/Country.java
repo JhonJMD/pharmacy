@@ -1,5 +1,7 @@
 package com.pharmacy.country.domain.entity;
 
+import java.text.MessageFormat;
+
 public class Country {
     private String codecountry;
     private String namecountry;
@@ -27,4 +29,11 @@ public class Country {
     public void setNamecountry(String namecountry) {
         this.namecountry = namecountry;
     }
+
+    @Override
+    public String toString() {
+        String data = MessageFormat.format("Code :{0}\nName : {1}",this.codecountry, this.namecountry);
+        return data;
+    }
+    
 }
