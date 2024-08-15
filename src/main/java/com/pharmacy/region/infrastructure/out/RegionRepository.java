@@ -47,7 +47,6 @@ public class RegionRepository implements RegionService{
             JOptionPane.showMessageDialog(null, "Error during region addition: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         } 
-        
     }
 
     @Override

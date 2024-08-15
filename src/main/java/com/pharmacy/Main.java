@@ -2,6 +2,7 @@ package com.pharmacy;
 
 import javax.swing.JOptionPane;
 
+import com.pharmacy.city.infrastructure.in.CityController;
 import com.pharmacy.country.infrastructure.in.CountryController;
 import com.pharmacy.region.infrastructure.in.RegionController;
 
@@ -21,7 +22,8 @@ public class Main {
                     consoleAdapterRegion.mainMenu();
                     break;
                 case 3:
-                    
+                    CityController consoleAdapterCity = new CityController();
+                    consoleAdapterCity.mainMenu();
                     break;
                 case 4:
                     
